@@ -35,7 +35,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Zed\\": "app/Star/"
+            "Zed\\": "app/Zed/"
         },
         "classmap": [
             "database/seeds",

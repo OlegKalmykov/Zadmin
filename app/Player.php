@@ -46,6 +46,13 @@ class Player extends Model
      */
     public $timestamps = false;
 
+    /**
+     * Мутатор для изменения часового пояса с Амстердаского на Московский
+     *
+     * @param $value
+     *
+     * @return string
+     */
     public function getLastActivityAttribute($value)
     {
         return Carbon::parse($value)->addHour(1)->format('H:i:s d.m.Y');
