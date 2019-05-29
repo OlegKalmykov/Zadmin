@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Player
  *
- * @property $last_activity             Время последней активности
+ * @property Carbon $last_activity             Время последней активности
  * @package App
  */
 class Player extends Model
@@ -46,6 +46,8 @@ class Player extends Model
      */
     public $timestamps = false;
 
+    // private $breadDateFormat = '{"format": "%H:%M:%S %Y-%m-%d"}';
+
     /**
      * Мутатор для изменения часового пояса с Амстердаского на Московский
      *
@@ -55,6 +57,6 @@ class Player extends Model
      */
     public function getLastActivityAttribute($value)
     {
-        return Carbon::parse($value)->addHour(1)->format('H:i:s d.m.Y');
+        return Carbon::parse($value)->addHour(1)/*->format('H:i:s d.m.Y')*/;
     }
 }
