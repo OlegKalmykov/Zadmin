@@ -2,6 +2,7 @@
 
 namespace Zed\Players\Http\Controllers\Backend;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Zed\Players\Services\ActivitiesDiagramService;
 
@@ -22,12 +23,20 @@ class ActivitiesController extends Controller
         $this->activitiesDiagramService = $activitiesDiagramService;
     }
 
-    public function activity()
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function activity(Request $request)
     {
-        $data = $this->activitiesDiagramService->getPlayersActivityData();
+        $lastDays = (int)$request->get('days', 5);
+
+        $data = $this->activitiesDiagramService->getPlayersActivityData($lastDays);
 
         return view('admin.custom', [
-            'data' => json_encode($data),
+            'data'     => json_encode($data),
+            'lastDays' => $lastDays,
         ]);
     }
 }

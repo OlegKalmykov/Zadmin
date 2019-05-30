@@ -20,6 +20,11 @@
         <div class="col-md-12">
             <div class="panel panel-bordered">
                 <div class="panel-body">
+                    <select id="days">
+                        @foreach([3, 5, 10, 30] as $days)
+                            <option value="{{ $days }}" @if($days === $lastDays) selected @endif>{{ $days }}</option>
+                        @endforeach
+                    </select>
                     <div id="container"></div>
                 </div>
             </div>
@@ -33,6 +38,7 @@
     <script type="text/javascript">
         $(function () {
             let data = {!! $data !!};
+
             $('#container').highcharts({
                 chart: {
                     type: 'column'
@@ -48,6 +54,9 @@
                         text: 'Count'
                     }
                 },
+                legend: {
+                    enabled: false
+                },
                 plotOptions: {
                     series: {
                         borderWidth: 0,
@@ -60,6 +69,10 @@
                     name: 'Players Count',
                     data: data
                 }]
+            });
+
+            $('#days').change(function() {
+                window.location = '{{url()->current() }}?days=' + $(this).val();
             });
         });
     </script>
