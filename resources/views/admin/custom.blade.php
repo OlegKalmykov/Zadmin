@@ -40,15 +40,15 @@
             let data = {!! $data !!};
 
             $('#container').highcharts({
-                chart: {
-                    type: 'column'
-                },
+                // chart: {
+                //     type: 'column'
+                // },
                 title: {
                     text: 'Player Activity'
                 },
-                xAxis: {
-                    type: 'category'
-                },
+                // xAxis: {
+                //     type: 'category'
+                // },
                 yAxis: {
                     title: {
                         text: 'Count'
@@ -59,6 +59,9 @@
                 },
                 plotOptions: {
                     series: {
+                        label: {
+                            connectorAllowed: false
+                        },
                         borderWidth: 0,
                         dataLabels: {
                             enabled: true,
