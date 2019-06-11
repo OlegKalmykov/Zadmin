@@ -38,6 +38,7 @@
     <script type="text/javascript">
         $(function () {
             let data = {!! $data !!};
+            let days = {!! $days !!};
 
             $('#container').highcharts({
                 // chart: {
@@ -46,10 +47,11 @@
                 title: {
                     text: 'Player Activity'
                 },
-                // xAxis: {
-                //     type: 'category'
-                // },
+                xAxis: {
+                    type: 'category'
+                },
                 yAxis: {
+                    allowDecimals: false,
                     title: {
                         text: 'Count'
                     }
@@ -62,6 +64,7 @@
                         label: {
                             connectorAllowed: false
                         },
+                        pointStart: days,
                         borderWidth: 0,
                         dataLabels: {
                             enabled: true,

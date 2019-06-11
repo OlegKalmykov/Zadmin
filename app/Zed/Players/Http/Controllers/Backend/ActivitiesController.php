@@ -36,6 +36,7 @@ class ActivitiesController extends Controller
 
         return view('admin.custom', [
             'data'     => json_encode($data),
+            'days'     => json_encode(array_column($data, 'name')),
             'lastDays' => $lastDays,
         ]);
     }
